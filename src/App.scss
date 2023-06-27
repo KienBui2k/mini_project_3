@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.App__container {
+    border: 1px solid black;
+    width: 410px;
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+
+    .header__container {
+
+        width: 400px;
+        height: 50px;
+        display: flex;
+        justify-content: space-evenly;
+        color: rgb(18, 17, 17);
+
+        .header__title {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header__btn {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .header__btn__one {
+                background-color: rgb(235, 99, 49);
+                border: none;
+                height: 30px;
+                border-radius: 4px;
+                color: white;
+                padding: 8px;
+            }
+
+            .header__btn__two {
+                background-color: rgb(56, 224, 56);
+                border: none;
+                height: 30px;
+                border-radius: 4px;
+                color: white;
+                padding: 8px;
+            }
+        }
+    }
+
+    .addTask__container {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+
+        .input__add__task {
+            width: 100%;
+            margin: 8px auto;
+            box-sizing: border-box;
+            padding: 2px;
+        }
+
+        ::placeholder {
+            padding-left: 4px;
+        }
+
+        .input__checkbox {
+            display: flex;
+            width: 100%;
+            height: 30px;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+
+            input {
+                position: absolute;
+                top: 30%;
+                left: 60%;
+            }
+        }
+
+        .Add__btn {
+            width: 100%;
+            height: 30px;
+            background-color: rgb(47, 44, 44);
+            color: white;
+            border-radius: 5px;
+            border: none;
+        }
+    }
+
+    .task {
+        display: flex;
+        width: 100%;
+        height: 60px;
+        background-color: rgb(208, 210, 210);
+        margin: 10px auto;
+        border-radius: 4px;
+
+        .task__active {
+            background-color: green;
+            width: 2%;
+            height: 100%;
+        }
+
+        .task__info {
+            width: 65%;
+            height: 100%;
+            line-height: 1.6;
+            margin: 4px auto;
+
+        }
+
+        .task__add__btn {
+            width: 30%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+
+            button {
+                background-color: red;
+                color: white;
+                height: 30px;
+                border: none;
+                border-radius: 5px;
+                padding: 4px;
+            }
+        }
+
+    }
+
+    .footer__about {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 20px auto;
+    }
+}
