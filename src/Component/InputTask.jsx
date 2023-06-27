@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ListTask from './ListTask'
 import axios from 'axios'
-
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function InputTask() {
   const [tasks, setTasks] = useState(null)
@@ -9,22 +9,32 @@ export default function InputTask() {
   const [addTask, setAddTask] = useState("")
   const [addTime, setAddTime] = useState("")
   const [AddBtn, setAddBtn] = useState(false)
+  const dispatch = useDispatch();
+  const commonStore = useSelector((store) => store.commonStore)
   useEffect(() => {
     axios.get("http://localhost:3000/tasks")
     .then(resolve => setTasks(resolve.data))
     .catch(error => error(null))
-  },[])
+  },[commonStore.reload])
+
   const handleAddTask = (task,time,reminder) =>{
+
     axios.post("http://localhost:3000/tasks", {
       "task": task,
       "time": time,
       "checkReminder":reminder
     })
-     .then(resolve => setTasks([...tasks, resolve.data]))
+     .then(resolve => {
+      dispatch({
+        type:"REDLOAD"
+      })
+          setAddTask("")
+          setAddTime("")
+          setReminder(false)
+     })
+
      .catch(error => alert("Add Task không thành công vui lòng kiểm tra lại! "))
-     setAddTask("")
-     setAddTime("")
-     setReminder(false);
+
   }
   const handleCheckReminder = () => {
     setReminder(!reminder)
@@ -58,8 +68,8 @@ export default function InputTask() {
             </label>
             <br></br>
             <div className='input__checkbox'> 
-                <label> Set Reminder
-                <input type='checkbox' checked={reminder} onClick={ handleCheckReminder} ></input>
+              <label> Set Reminder
+                <input type='checkbox' checked ={reminder} onClick={ handleCheckReminder} ></input>
             </label>
             </div>
             <br></br>
